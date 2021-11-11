@@ -10,5 +10,6 @@ app = Flask(__name__)
 def homepage():
     result = requests.get("https://hello.ddc.moph.go.th")
     data = result.json()
+    app.logger.info(data)
     return render_template('covid.html',covid_stat=data[0])
 
