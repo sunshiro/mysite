@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Currency Converter</title>
+</head>
+<body>
+   <h1>Currency Converter</h1>
+
+   <form action="/result" method="get">
+   Enter amount in EUR: <input type="text" name="amount" value="0">
+   <br>
+   <input type="submit" value="Submit">
+   </form> 
+  
+</body>
+</html>
