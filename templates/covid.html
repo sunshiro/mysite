@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Covid-19 Status Report</title>
+</head>
+<body>
+   <h1>Covid-19 Status Report</h1>
+
+   <p>New case: {covid_stat['new_case']}</p>
+   <p>Total case: {covid_stat['total_case']}</p>
+
+</body>
+</html>
