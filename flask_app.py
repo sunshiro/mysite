@@ -8,8 +8,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def homepage():
-    result = requests.get("https://covid19.ddc.moph.go.th/api/Cases/today-cases-all")
+    result = requests.get("http://data.fixer.io/api/latest?access_key=88e986137779229d0ead7334b6a91252")
     data = result.json()
-    app.logger.info(data)
-    return render_template('covid.html',covid_stat=data[0])
+    return render_template('currency.html',exchange=data)
 
