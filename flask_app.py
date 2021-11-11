@@ -20,8 +20,8 @@ def currency_form():
 def currency_result():
     result = requests.get("http://data.fixer.io/api/latest?access_key=88e986137779229d0ead7334b6a91252")
     jsondata = result.json()
-    #eur_thb = jsondata['rates']['THB']
-    eur_thb = "37.5"
+    eur_thb = jsondata['rates']['THB']
+    #eur_thb = "37.5"
     eur = request.args.get('amount')
     thb = float(eur)*float(eur_thb)
     app.logger.info(thb)
