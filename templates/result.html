@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <title>Currency Rates</title>
+    <title>Currency Converter - Result</title>
 </head>
 <body>
-   <h1>Currency Rates</h1>
-   <p>THB: {{exchange['rates']['THB']}}</p>
+   <h1>Currency Converter</h1>
+
+   <p>{{amount_eur}} EUR = {{amount_thb}} THB</p>
+
 </body>
 </html>
