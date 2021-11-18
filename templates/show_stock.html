@@ -8,9 +8,26 @@
 <body>
    <h1>{{stock_symbol}}</h1>
 
+   <table>
+   <tr>
+       <td>Date</td>
+       <td>Open</td>
+       <td>High</td>
+       <td>Low</td>
+       <td>Close</td>
+       <td>Volume</td>
+   </tr>
    {% for d in stock_data %}
-    <p>{{stock_data[d]}}</p>
+   <tr>
+    <td>{{d}}</td>
+    <td>{{stock_data[d]['1. open']}}</td>
+    <td>{{stock_data[d]['2. high']}}</td>
+    <td>{{stock_data[d]['3. low']}}</td>
+    <td>{{stock_data[d]['4. close']}}</td>
+    <td>{{stock_data[d]['5. volume']}}</td>
+   </tr>
    {% endfor %}
+   </table>
 
 </body>
 </html>
