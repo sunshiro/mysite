@@ -23,3 +23,9 @@ def currency_result():
     eur = request.args.get('amount')
     thb = float(eur)*float(eur_thb)
     return render_template('result.html',amount_eur=eur,amount_thb=thb)
+
+@app.route('/show_stock', methods = ['GET'])
+def show_stock():
+    result = requests.get('https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=IBM&apikey=MYOJM36ZUW7R9G59')
+    jsondata = result.json()
+    return str(jsondata)
