@@ -6,9 +6,11 @@
     <title>Stock Data</title>
 </head>
 <body>
-   <h1>{{stock_symbol}}}}</h1>
+   <h1>{{stock_symbol}}</h1>
 
-   {{stock_table}}
+   {% for d in stock_data %}
+    <p>{{stock_data[d]}}</p>
+   {% endfor %}
 
 </body>
 </html>

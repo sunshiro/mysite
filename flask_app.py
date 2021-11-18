@@ -29,14 +29,5 @@ def show_stock():
     symbol = request.args.get('symbol')
     result = requests.get('https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol='+symbol+'&apikey=MYOJM36ZUW7R9G59')
     jsondata = result.json()
-    timeseries = jsondata['Time Series (Daily)']
-    s = ''
-    for d in timeseries:
-        s += d+', '
-        s += timeseries[d]['1. open']+', '
-        s += timeseries[d]['2. high']+', '
-        s += timeseries[d]['3. low']+', '
-        s += timeseries[d]['4. close']+', '
-        s += timeseries[d]['5. volume']+'<br>'
-
-    return render_template('show_stock.html',stock_symbol=symbol,stock_table=s)
+    stock_data = jsondata['Time Series (Daily)']
+    return render_template('show_stock.html',stock_symbol=symbol,stock_data=stock_data)
