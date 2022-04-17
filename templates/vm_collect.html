@@ -3,15 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <title>Kratai Bin - Confirm</title>
+    <title>Kratai Bin - Collect</title>
+    <script>
+        var numTumThai;
+        var numTumPoo;
+        function init() {
+            numTumThai = {{numTumThai}};
+            numTumPoo = {{numTumPoo}};
+
+            setTimeout("document.form.submit();", 5000);
+
+            document.addEventListener('click', function(e) {
+                if (e.target.class === 'TumThai') {
+                    e.target.remove();
+                    numTumThai--;
+                    document.getElementById('numTumThaiRemain').value = numTumThai;
+                } else if (e.target.class === 'TumPoo') {
+                    e.target.remove();
+                    numTumPoo--;
+                    document.getElementById('numTumThaiPooRemain').value = numTumPoo;
+                }
+                if (numTumThai+numTumPoo==0)
+                    document.form.submit();
+            });
+        }
+
+    </script>
 </head>
-<body>
-   <h1>Confirm</h1>
-   <form action="/kratai-bin/check_collect" method="get">
+<body onload="init()">
+   <h1>Please collect your items</h1>
+
+   {% for _ in range(numTumThai) %}
+   <a class="TumThai" href="javascript:void(0)">Tum Thai</a>
+   {% endfor %}
+   {% for _ in range(numTumPoo) %}
+   <a class="TumPoo" href="javascript:void(0)">Tum Poo</a>
+   {% endfor %}
+
+   <form name="form" id="form" action="/kratai-bin/check_collect" method="get">
    <br>
-   <input type="hidden" name="numTumThaiRemain" value="{{numTumThai}}">
-   <input type="hidden" name="numTumPooRemain" value="{{numTumPoo}}">
-   <input type="submit" name="btn_collect" value="Collect">
+   <input type="hidden" name="numTumThaiRemain" id="numTumThaiRemain" value="{{numTumThai}}">
+   <input type="hidden" name="numTumPooRemain" id="numTumPooRemain" value="{{numTumPoo}}">
+   <input type="submit" name="btn_done" id="btn_done" value="Collect" style="display:none;">
    </form>
 
 </body>
