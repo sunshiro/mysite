@@ -40,6 +40,10 @@ def stock_show():
 def vm_welcome():
     return render_template('vm_welcome.html')
 
+@app.route('/kratai-bin/order')
+def vm_welcome():
+    return render_template('vm_order.html')
+
 @app.route('/kratai-bin/confirm', methods = ['GET'])
 def vm_confirm():
     numTumThai = int(request.args.get('txt_tum_thai'))
