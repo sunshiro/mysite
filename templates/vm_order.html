@@ -51,18 +51,19 @@
             <td>1</td>
             <td>Tum Thai</td>
             <td>100</td>
-            <td><input type="text" name="txt_tum_thai" id="txt_tum_thai" disabled value="0"> <a id="add_tum_thai" href="javascript:void(0)" onclick="addTumThai()">Add</a></td>
+            <td><input type="text" name="txt_tum_thai" id="txt_tum_thai" readonly="readonly" value="0"> <a id="add_tum_thai" href="javascript:void(0)" onclick="addTumThai()">Add</a></td>
           </tr>
           <tr>
             <td>2</td>
             <td>Tum Poo</td>
             <td>120</td>
-            <td><input type="text" name="txt_tum_poo" id="txt_tum_poo" disabled value="0"> <a id="add_tum_poo" href="javascript:void(0)" onclick="addTumPoo()">Add</a></td>
+            <td><input type="text" name="txt_tum_poo" id="txt_tum_poo" readonly="readonly" value="0"> <a id="add_tum_poo" href="javascript:void(0)" onclick="addTumPoo()">Add</a></td>
           </tr>
         </tbody>
         </table>
    <br>
    <div id="msg_error" style="color:red; display:none;">ERROR: Maximum amount of each item is 3.</div>
+   <br>
 
    <input type="submit" name="btn_order" value="Order">
    <input type="button" name="btn_cancel" onclick="window.location.replace('/kratai-bin')" value="Cancel" />
