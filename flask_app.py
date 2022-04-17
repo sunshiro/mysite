@@ -57,14 +57,14 @@ def vm_confirm():
 def vm_pay():
     numTumThai = int(request.args.get('numTumThai'))
     numTumPoo = int(request.args.get('numTumPoo'))
-    grandTotal = int(request.args.get('grandToTal'))
+    grandTotal = int(request.args.get('grandTotal'))
     return render_template('vm_pay.html', numTumThai=numTumThai, numTumPoo=numTumPoo, grandTotal=grandTotal)
 
 @app.route('/kratai-bin/check_payment', methods = ['GET'])
 def vm_check_payment():
     numTumThai = int(request.args.get('numTumThai'))
     numTumPoo = int(request.args.get('numTumPoo'))
-    grandTotal = int(request.args.get('grandToTal'))
+    grandTotal = int(request.args.get('grandTotal'))
     creditCardNum = request.args.get('txt_credit_card_num')
     nameOnCard = request.args.get('txt_name_on_card')
     if (len(creditCardNum) > 0) and (len(nameOnCard) > 0):
