@@ -11,7 +11,7 @@
             numTumThai = {{numTumThai}};
             numTumPoo = {{numTumPoo}};
 
-            //setTimeout("document.form.submit();", 5000);
+            setTimeout("document.form.submit();", 5000);
 
             document.addEventListener('click', function(e) {
                 if (e.target.className == 'TumThai') {
@@ -21,7 +21,7 @@
                 } else if (e.target.className == 'TumPoo') {
                     e.target.remove();
                     numTumPoo--;
-                    document.getElementById('numTumThaiPooRemain').value = numTumPoo;
+                    document.getElementById('numTumPooRemain').value = numTumPoo;
                 }
                 if (numTumThai+numTumPoo==0)
                     document.form.submit();
