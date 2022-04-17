@@ -14,11 +14,11 @@
             setTimeout("document.form.submit();", 5000);
 
             document.addEventListener('click', function(e) {
-                if (e.target.class === 'TumThai') {
+                if (e.target.class == 'TumThai') {
                     e.target.remove();
                     numTumThai--;
                     document.getElementById('numTumThaiRemain').value = numTumThai;
-                } else if (e.target.class === 'TumPoo') {
+                } else if (e.target.class == 'TumPoo') {
                     e.target.remove();
                     numTumPoo--;
                     document.getElementById('numTumThaiPooRemain').value = numTumPoo;
