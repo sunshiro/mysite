@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Kratai Bin - Confirm</title>
+</head>
+<body>
+   <h1>Confirm</h1>
+   <form action="/kratai-bin/check_collect" method="get">
+   <br>
+   <input type="hidden" name="numTumThaiRemain" value="{{numTumThai}}">
+   <input type="hidden" name="numTumPooRemain" value="{{numTumPoo}}">
+   <input type="submit" name="btn_collect" value="Collect">
+   </form>
+
+</body>
+</html>

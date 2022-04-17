@@ -34,4 +34,46 @@ def stock_show():
     result = requests.get('https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol='+symbol+'&apikey=MYOJM36ZUW7R9G59')
     jsondata = result.json()
     stock_data = jsondata['Time Series (Daily)']
-    return render_template('stock_show.html',stock_symbol=symbol,stock_data=stock_data)
+    return render_template('stock_show.html', stock_symbol=symbol, stock_data=stock_data)
+
+
+@app.route('/kratai-bin')
+def vm_welcome():
+    return render_template('vm_welcome.html')
+
+@app.route('/kratai-bin/confirm', methods = ['GET'])
+def vm_comfirm():
+    numTumThai = int(request.args.get('txt_tum_thai'))
+    numTumPoo = int(request.args.get('txt_tum_poo'))
+    totalTumThai = 100*numTumThai
+    totalTumPoo = 120*numTumPoo
+    grandTotal = totalTumThai+totalTumPoo
+    return render_template('vm_confirm.html', numTumThai=numTumThai, numTumPoo=numTumPoo, totalTumThai=totalTumThai, totalTumPoo=totalTumPoo, grandTotal=grandTotal)
+
+@app.route('/kratai-bin/pay', methods = ['GET'])
+def vm_comfirm():
+    numTumThai = int(request.args.get('numTumThai'))
+    numTumPoo = int(request.args.get('numTumPoo'))
+    grandTotal = int(request.args.get('grandToTal'))
+    return render_template('vm_pay.html', numTumThai=numTumThai, numTumPoo=numTumPoo, grandTotal=grandTotal)
+
+@app.route('/kratai-bin/check_payment', methods = ['GET'])
+def vm_comfirm():
+    numTumThai = int(request.args.get('numTumThai'))
+    numTumPoo = int(request.args.get('numTumPoo'))
+    grandTotal = int(request.args.get('grandToTal'))
+    creditCardNum = request.args.get('txt_credit_card_num')
+    nameOnCard = request.args.get('txt_name_on_card')
+    if (len(creditCardNum) > 0) and (len(nameOnCard) > 0):
+        return render_template('vm_collect.html', numTumThai=numTumThai, numTumPoo=numTumPoo)
+    else:
+        return render_template('vm_pay.html', numTumThai=numTumThai, numTumPoo=numTumPoo, grandTotal=grandTotal, paymentError=True)
+
+@app.route('/kratai-bin/check_collect', methods = ['GET'])
+def vm_comfirm():
+    numTumThaiRemain = int(request.args.get('numTumThaiRemain'))
+    numTumPooRemain = int(request.args.get('numTumPooRemain'))
+    if (numTumThaiRemain == 0) and (numTumPooRemain == 0):
+        return render_template('vm_welcome.html')
+    else:
+        return render_template('vm_clear.html')

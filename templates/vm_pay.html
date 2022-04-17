@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Kratai Bin - Pay</title>
+
+    <script>
+        function hideError() {
+            errorMessage=document.getElementById("msg_error");
+            if (errorMessage)
+                errorMessage.style.display = "none";
+        }
+    </script>
+</head>
+<body>
+   <h1>Pay</h1>
+   <p>Amount to be paid: {{grandTotal}}</p>
+
+   <form action="/kratai-bin/check_payment" method="get">
+    <table>
+        <tbody>
+          <tr>
+            <td>Credit card no.</td>
+            <td><input type="text" name="txt_credit_card_num" onchange="hideError()"></td>
+          </tr>
+          <tr>
+            <td>Name on card</td>
+            <td><input type="text" name="txt_name_on_card" onchange="hideError()"></td>
+          </tr>
+        </tbody>
+        </table>
+   <br>
+
+    {% if paymentError %}
+    <div id="msg_error" style="color:red; display:block;">Payment error. Please retry.</div>
+    {% endif %}
+
+   <input type="hidden" name="numTumThai" value="{{numTumThai}}">
+   <input type="hidden" name="numTumPoo" value="{{numTumPoo}}">
+   <input type="hidden" name="grandTotal" value="{{grandTotal}}">
+   <input type="submit" name="btn_pay" value="Pay">
+   <input type="button" name="btn_cancel" onclick="window.location.replace('/kratai-bin')" value="Cancel" />
+   </form>
+
+</body>
+</html>

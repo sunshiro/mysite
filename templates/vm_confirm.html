@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Kratai Bin - Confirm</title>
+</head>
+<body>
+   <h1>Confirm</h1>
+   <form action="/kratai-bin/pay" method="get">
+    <table>
+        <thead>
+          <tr>
+            <th>No.</th>
+            <th>Item</th>
+            <th>Amount</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Tum Thai</td>
+            <td>{{numTumThai}}</td>
+            <td>{{totalTumThai}}</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Tum Poo</td>
+            <td>{{numTumPoo}}</td>
+            <td>{{totalTumPoo}}</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>Grand Total</td>
+            <td></td>
+            <td>{{grandTotal}}</td>
+          </tr>
+        </tbody>
+        </table>
+   <br>
+   <input type="hidden" name="numTumThai" value="{{numTumThai}}">
+   <input type="hidden" name="numTumPoo" value="{{numTumPoo}}">
+   <input type="hidden" name="grandTotal" value="{{grandTotal}}">
+   <input type="submit" name="btn_pay" value="Pay">
+   </form> 
+
+</body>
+</html>
