@@ -75,6 +75,6 @@ def vm_check_collect():
     numTumThaiRemain = int(request.args.get('numTumThaiRemain'))
     numTumPooRemain = int(request.args.get('numTumPooRemain'))
     if (numTumThaiRemain == 0) and (numTumPooRemain == 0):
-        return render_template('vm_welcome.html')
+        vm_welcome()
     else:
         return render_template('vm_clear.html')
