@@ -7,6 +7,7 @@ from datetime import date
 
 app = Flask(__name__)
 app.url_map.strict_slashes = False
+app.secret_key = b'dfgsdgvdcrevd4893r34tqyof'
 
 @app.route('/')
 def homepage():
