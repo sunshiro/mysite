@@ -44,7 +44,11 @@ def vm_welcome():
 
 @app.route('/kratai-bin/order')
 def vm_order():
-    return render_template('vm_order.html')
+    if 'numTumThai' not in session:
+        session['numTumThai'] = 0
+    if 'numTumPoo' not in session:
+        session['numTumPoo'] = 0
+    return render_template('vm_order.html', numTumThai=session['numTumThai'], numTumPoo=session['numTumPoo'])
 
 @app.route('/kratai-bin/confirm', methods = ['GET'])
 def vm_confirm():
