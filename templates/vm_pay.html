@@ -6,14 +6,24 @@
     <title>Kratai Bin - Pay</title>
 
     <script>
-        function hideError() {
-            errorMessage=document.getElementById("msg_error");
-            if (errorMessage)
-                errorMessage.style.display = "none";
-        }
+      function init() {
+        {% if paymentError %}showError();{% endif %}
+      }
+
+      function showError() {
+        errorMessage=document.getElementById("msg_error");
+        if (errorMessage)
+          errorMessage.style.display = "block";
+      }
+
+      function hideError() {
+        errorMessage=document.getElementById("msg_error");
+        if (errorMessage)
+          errorMessage.style.display = "none";
+      }
     </script>
 </head>
-<body>
+<body onload="init()">
    <h1>Pay</h1>
    <p>Amount to be paid: <span id="msg_grand_total">{{grandTotal}}</span></p>
 
@@ -32,11 +42,8 @@
         </table>
    <br>
 
-    {% if paymentError %}
-    <div id="msg_error" style="color:red; display:block;">Payment error. Please retry.</div>
-    <br>
-    {% endif %}
-
+   <div id="msg_error" style="color:red; display:none;">ERROR: Payment failed. {{'allowedPaymentRetries}} retries remaining.</div>
+  <br>
    <input type="submit" name="btn_pay" id="btn_pay" value="Pay">
    <input type="button" name="btn_cancel" id="btn_cancel" onclick="window.location.replace('/kratai-bin')" value="Cancel" />
    </form>

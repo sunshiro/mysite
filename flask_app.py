@@ -42,6 +42,7 @@ def stock_show():
 def vm_welcome():
     session['numTumThai'] = 0
     session['numTumPoo'] = 0
+    session['allowedPaymentRetries'] = 3
     return render_template('vm_welcome.html')
 
 @app.route('/kratai-bin/order')
@@ -68,7 +69,11 @@ def vm_check_payment():
     if (len(creditCardNum) > 0) and (len(nameOnCard) > 0):
         return render_template('vm_collect.html', numTumThai=session['numTumThai'], numTumPoo=session['numTumPoo'])
     else:
-        return render_template('vm_pay.html', grandTotal=session['grandTotal'], paymentError=True)
+        session['allowedPaymentRetries'] -= 1
+        if session['allowedPaymentRetries']>0:
+            return render_template('vm_pay.html', grandTotal=session['grandTotal'], paymentError=True, allowedPaymentRetries=session['allowedPaymentRetries'])
+        else:
+            return vm_welcome()
 
 @app.route('/kratai-bin/check_collect', methods = ['GET'])
 def vm_check_collect():
