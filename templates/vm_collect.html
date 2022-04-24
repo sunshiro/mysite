@@ -13,11 +13,11 @@
             setTimeout("document.form.submit();", 10000);
 
             document.addEventListener('click', function(e) {
-                if (e.target.className == 'TumThai') {
+                if (e.target.className == 'ImgTumThai') {
                     e.target.remove();
                     numTumThai--;
                     document.getElementById('numTumThaiRemain').value = numTumThai;
-                } else if (e.target.className == 'TumPoo') {
+                } else if (e.target.className == 'ImgTumPoo') {
                     e.target.remove();
                     numTumPoo--;
                     document.getElementById('numTumPooRemain').value = numTumPoo;
