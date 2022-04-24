@@ -15,7 +15,7 @@
 </head>
 <body>
    <h1>Pay</h1>
-   <p>Amount to be paid: {{grandTotal}}</p>
+   <p>Amount to be paid: <span id="msg_grand_total">{{grandTotal}}</span></p>
 
    <form action="/kratai-bin/check_payment" method="get">
     <table>
@@ -37,11 +37,8 @@
     <br>
     {% endif %}
 
-   <input type="hidden" name="numTumThai" value="{{numTumThai}}">
-   <input type="hidden" name="numTumPoo" value="{{numTumPoo}}">
-   <input type="hidden" name="grandTotal" value="{{grandTotal}}">
-   <input type="submit" name="btn_pay" value="Pay">
-   <input type="button" name="btn_cancel" onclick="window.location.replace('/kratai-bin')" value="Cancel" />
+   <input type="submit" name="btn_pay" id="btn_pay" value="Pay">
+   <input type="button" name="btn_cancel" id="btn_cancel" onclick="window.location.replace('/kratai-bin')" value="Cancel" />
    </form>
 
 </body>

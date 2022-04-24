@@ -12,22 +12,20 @@
         }
 
         function addTumThai() {
-            document.getElementById("msg_error").style.display = 'none';
             if (numTumThai<3) {
-                numTumThai++;
-                document.getElementById("txt_tum_thai").value = numTumThai.toString();
+              numTumThai++;
+              document.getElementById("txt_tum_thai").value = numTumThai.toString();
             } else {
-                document.getElementById("msg_error").style.display = 'block';
+              alert("ERROR: Maximum number of order of each item is 3.");
             }
             document.getElementById("btn_order").disabled = false;
         }
         function addTumPoo() {
-            document.getElementById("msg_error").style.display = 'none';
             if (numTumPoo<3) {
-                numTumPoo++;
-                document.getElementById("txt_tum_poo").value = numTumPoo.toString();
+              numTumPoo++;
+              document.getElementById("txt_tum_poo").value = numTumPoo.toString();
             } else {
-                document.getElementById("msg_error").style.display = 'block';
+              alert("ERROR: Maximum number of order of each item is 3.");
             }
             document.getElementById("btn_order").disabled = false;
         }
@@ -64,11 +62,8 @@
         </tbody>
         </table>
    <br>
-   <div id="msg_error" style="color:red; display:none;">ERROR: Maximum amount of each item is 3.</div>
-   <br>
-
-   <input type="submit" name="btn_order" id="btn_order" value="Order" disabled>
-   <input type="button" name="btn_cancel" onclick="window.location.replace('/kratai-bin')" value="Cancel" />
+   <input type="submit" name="btn_check_out" id="btn_check_out" value="Check out" disabled>
+   <input type="button" name="btn_cancel" id="btn_cancel" onclick="window.location.replace('/kratai-bin')" value="Cancel" />
    </form> 
   
 </body>

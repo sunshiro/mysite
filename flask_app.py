@@ -1,7 +1,7 @@
 
 # A very simple Flask Hello World app for you to get started with...
 
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, session
 import requests
 from datetime import date
 
@@ -47,31 +47,25 @@ def vm_order():
 
 @app.route('/kratai-bin/confirm', methods = ['GET'])
 def vm_confirm():
-    numTumThai = int(request.args.get('txt_tum_thai'))
-    numTumPoo = int(request.args.get('txt_tum_poo'))
-    totalTumThai = 100*numTumThai
-    totalTumPoo = 120*numTumPoo
-    grandTotal = totalTumThai+totalTumPoo
-    return render_template('vm_confirm.html', numTumThai=numTumThai, numTumPoo=numTumPoo, totalTumThai=totalTumThai, totalTumPoo=totalTumPoo, grandTotal=grandTotal)
+    session['numTumThai'] = int(request.args.get('txt_tum_thai'))
+    session['numTumPoo'] = int(request.args.get('txt_tum_poo'))
+    session['totalTumThai'] = '{0:.2f}'.format(100.0*session['numTumThai'])
+    session['totalTumPoo'] = '{0:.2f}'.format(120.0*session['numTumPoo'])
+    session['grandTotal'] = '{0:.2f}'.format(100.0*session['numTumThai']+120.0*session['numTumPoo'])
+    return render_template('vm_confirm.html', numTumThai=session['numTumThai'], numTumPoo=session['numTumPoo'], totalTumThai=session['totalTumThai'], totalTumPoo=session['totalTumPoo'], grandTotal=session['grandTotal'])
 
 @app.route('/kratai-bin/pay', methods = ['GET'])
 def vm_pay():
-    numTumThai = int(request.args.get('numTumThai'))
-    numTumPoo = int(request.args.get('numTumPoo'))
-    grandTotal = int(request.args.get('grandTotal'))
-    return render_template('vm_pay.html', numTumThai=numTumThai, numTumPoo=numTumPoo, grandTotal=grandTotal)
+    return render_template('vm_pay.html', grandTotal=session['grandTotal'])
 
 @app.route('/kratai-bin/check_payment', methods = ['GET'])
 def vm_check_payment():
-    numTumThai = int(request.args.get('numTumThai'))
-    numTumPoo = int(request.args.get('numTumPoo'))
-    grandTotal = int(request.args.get('grandTotal'))
     creditCardNum = request.args.get('txt_credit_card_num')
     nameOnCard = request.args.get('txt_name_on_card')
     if (len(creditCardNum) > 0) and (len(nameOnCard) > 0):
-        return render_template('vm_collect.html', numTumThai=numTumThai, numTumPoo=numTumPoo)
+        return render_template('vm_collect.html', numTumThai=session['numTumThai'], numTumPoo=session['numTumPoo'])
     else:
-        return render_template('vm_pay.html', numTumThai=numTumThai, numTumPoo=numTumPoo, grandTotal=grandTotal, paymentError=True)
+        return render_template('vm_pay.html', grandTotal=session['grandTotal'], paymentError=True)
 
 @app.route('/kratai-bin/check_collect', methods = ['GET'])
 def vm_check_collect():

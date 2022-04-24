@@ -34,11 +34,11 @@
    <h1>Please collect your items</h1>
 
    {% for _ in range(numTumThai) %}
-   <img class="TumThai" src="{{ url_for('static', filename='tum_thai.jpg') }}" alt="Tum Thai" width="275" height="183">
+   <img class="ImgTumThai" src="{{ url_for('static', filename='tum_thai.jpg') }}" alt="Tum Thai" width="275" height="183">
    {% endfor %}
    <br/>
    {% for _ in range(numTumPoo) %}
-   <img class="TumPoo" src="{{ url_for('static', filename='tum_poo.jpg') }}" alt="Tum Poo" width="275" height="183">
+   <img class="ImgTumPoo" src="{{ url_for('static', filename='tum_poo.jpg') }}" alt="Tum Poo" width="275" height="183">
    {% endfor %}
 
    <form name="form" id="form" action="/kratai-bin/check_collect" method="get">

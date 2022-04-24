@@ -21,28 +21,26 @@
           <tr>
             <td>1</td>
             <td>Tum Thai</td>
-            <td>{{numTumThai}}</td>
-            <td>{{totalTumThai}}</td>
+            <td><span id="msg_num_tum_thai">{{numTumThai}}</span></td>
+            <td><span id="msg_total_tum_thai">{{totalTumThai}}</span></td>
           </tr>
           <tr>
             <td>2</td>
             <td>Tum Poo</td>
-            <td>{{numTumPoo}}</td>
-            <td>{{totalTumPoo}}</td>
+            <td><span id="msg_num_tum_poo">{{numTumPoo}}</span></td>
+            <td><span id="msg_total_tum_poo">{{totalTumPoo}}</span></td>
           </tr>
           <tr>
             <td></td>
             <td>Grand Total</td>
             <td></td>
-            <td>{{grandTotal}}</td>
+            <td><span id="msg_grand_total">{{grandTotal}}</span></td>
           </tr>
         </tbody>
         </table>
    <br>
-   <input type="hidden" name="numTumThai" value="{{numTumThai}}">
-   <input type="hidden" name="numTumPoo" value="{{numTumPoo}}">
-   <input type="hidden" name="grandTotal" value="{{grandTotal}}">
-   <input type="submit" name="btn_confirm" value="Confirm">
+   <input type="button" name="btn_change" id="btn_change" value="Change">
+   <input type="submit" name="btn_confirm" id="btn_confirm" value="Confirm">
    </form> 
 
 </body>
