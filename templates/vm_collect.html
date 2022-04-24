@@ -25,12 +25,20 @@
                 if (numTumThai+numTumPoo==0)
                     document.form.submit();
             });
-        }
 
+            var timeleft = 10;
+            var countdownTimer = setInterval(function(){
+                document.getElementById("countdown").innerHTML = timeleft;
+                if(timeleft <= 0)
+                    clearInterval(countdownTimer);
+                timeleft -= 1;
+            }, 1000);
+        }
     </script>
 </head>
 <body onload="init()">
    <h1>Please collect your items</h1>
+   <p id="countdown"></p>
 
    {% for _ in range(numTumThai) %}
    <img class="ImgTumThai" src="{{ url_for('static', filename='tum_thai.jpg') }}" alt="Tum Thai" width="137" height="91">
