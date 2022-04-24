@@ -10,8 +10,6 @@
             numTumThai = {{numTumThai}};
             numTumPoo = {{numTumPoo}};
 
-            setTimeout("document.form.submit();", 10000);
-
             document.addEventListener('click', function(e) {
                 if (e.target.className == 'ImgTumThai') {
                     e.target.remove();
@@ -29,8 +27,10 @@
             var timeleft = 10;
             var countdownTimer = setInterval(function(){
                 document.getElementById("countdown").innerHTML = timeleft;
-                if(timeleft <= 0)
+                if(timeleft <= 0) {
                     clearInterval(countdownTimer);
+                    document.form.submit();
+                }
                 timeleft -= 1;
             }, 1000);
         }
